@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 
     class StackException : Exception
@@ -29,13 +30,17 @@ using System;
 
         public void Pop()
         {
+            try{
             if (this.top == -1)
-                throw new StackException("Stack underflow");
+                throw new StackException();
             else
             {
                 Console.WriteLine("{0} popped", this.stack[top]);
                 this.top--;
             }
+        }
+         catch(Exception ex )
+         {Console.Write("stack underflow {0}",ex.Message);}
         }
 
         public void DisplayStack()
